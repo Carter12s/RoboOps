@@ -1,3 +1,5 @@
 */bin
 */build
 *Makefile
+RO_srv/src
+RO_srv/srv_gen

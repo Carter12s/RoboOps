@@ -11,7 +11,8 @@
   <depend package="roscpp"/>
   <depend package="PhidgetServo"/>
   <depend package="corobot_msgs"/>
-
+  <depend package="corobot_srvs"/>
+  <depend package="RO_srv"/>
 </package>
 
 
