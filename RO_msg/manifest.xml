@@ -1,0 +1,14 @@
+<package>
+  <description brief="RO_msg">
+
+     RO_msg
+
+  </description>
+  <author>carter</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/RO_msg</url>
+
+</package>
+
+
