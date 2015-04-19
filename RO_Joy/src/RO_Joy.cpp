@@ -52,7 +52,7 @@ int main(int argc, char **argv){
 	driver_setThrottle = n.serviceClient<RO_srv::Driver_setThrottle>("Driver_setThrottle");
 	driver_setSteering = n.serviceClient<RO_srv::Driver_setThrottle>("Driver_setSteering");
 	joy_sub = n.subscribe<sensor_msgs::Joy>("joy", 10, &joyCallback);
-	timer = n.createTimer(ros::Duration(0.1),timerCallback);
+	timer = n.createTimer(ros::Duration(0.25),timerCallback);
 	ros::spin();
 	return 0;
 }

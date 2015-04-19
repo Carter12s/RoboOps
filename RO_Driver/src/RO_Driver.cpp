@@ -8,8 +8,10 @@ ros::ServiceClient servo_setPosition;
 
 bool throttle_engaged = false;
 bool steering_engaged = false;
-float throttle_min = 40.0;
-float throttle_max = 150.0;
+float throttle_min = 60.0f;
+float throttle_max = 150.0f;
+float steering_max = 20.0f;
+float steering_min = -20.0f;
 
 //Zero positions of steering servos (adjust by gold shaft couple)
 float fr_zero = 103.0f;// Servo 5
@@ -28,16 +30,18 @@ bool setSteering(RO_srv::Driver_setThrottle::Request &req, RO_srv::Driver_setThr
 		servo_setEngaged.call(srv);
 		srv.request.index = 4;
 		servo_setEngaged.call(srv);
+		steering_engaged = true;
 	}
+	float scale = (steering_max-steering_min)/2.0f;
 	corobot_srvs::SetPosition srv;
 	srv.request.index = 6;
-	srv.request.position = fl_zero + req.throttle;
+	srv.request.position = fl_zero + req.throttle*scale;
 	servo_setPosition.call(srv);
 	srv.request.index = 5;
-	srv.request.position = fr_zero + req.throttle;
+	srv.request.position = fr_zero + req.throttle*scale;
 	servo_setPosition.call(srv);
 	srv.request.index = 4;
-	srv.request.position = r_zero - req.throttle;
+	srv.request.position = r_zero - req.throttle*scale;
 	servo_setPosition.call(srv);
 }
 
@@ -56,7 +60,7 @@ bool setThrottle(RO_srv::Driver_setThrottle::Request &req, RO_srv::Driver_setThr
 	}
 	corobot_srvs::SetPosition srv;
 	srv.request.index = 7;
-	srv.request.position = req.throttle*(throttle_max-throttle_min)+throttle_min;
+	srv.request.position = req.throttle*(throttle_max-throttle_min)/2.0f+(throttle_max-throttle_min)/2.0f+throttle_min;
 	ROS_INFO("Throttle Servo Request @ %f",srv.request.position);
 	if(servo_setPosition.call(srv)){
 		ROS_WARN("Servo Position Failed To Set");

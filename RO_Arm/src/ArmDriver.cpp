@@ -21,8 +21,8 @@ float theta1_min = -90.0f;
 float theta1_max = 90.0f;
 float theta2_min = -90.0f;
 float theta2_max = 90.0f;
-float theta3_min = -90.0f;
-float theta3_max = 90.0f;
+float theta3_min = -44.0f;
+float theta3_max = 0.0f;
 
 bool limitAngles(RO_srv::Arm_setAngles::Request &req){
 	bool passed = true;
@@ -73,7 +73,7 @@ bool setAngles(RO_srv::Arm_setAngles::Request &req, RO_srv::Arm_setAngles::Respo
         }
 
  	srv.request.index = 2;
-        srv.request.position = req.theta2*440.0f/90.0f+1440.0f;
+        srv.request.position = -req.theta2*440.0f/90.0f+1440.0f;
         if(servo_setPosition.call(srv)){
                 ROS_WARN("Servo Position Failed To Set");
         }
