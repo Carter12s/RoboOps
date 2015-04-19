@@ -24,7 +24,33 @@ float theta2_max = 90.0f;
 float theta3_min = -44.0f;
 float theta3_max = 0.0f;
 
+void home(){
+	corobot_srvs::SetPosition srv;
+	srv.request.index = 0;
+        srv.request.position = 1440.0f;
+        if(servo_setPosition.call(srv)){
+                ROS_WARN("Servo Position Failed To Set");
+        }srv.request.index = 1;
+        srv.request.position = 1440.0f;
+        if(servo_setPosition.call(srv)){
+                ROS_WARN("Servo Position Failed To Set");
+        }srv.request.index = 2;
+        srv.request.position = 1440.0f;
+        if(servo_setPosition.call(srv)){
+                ROS_WARN("Servo Position Failed To Set");
+        }srv.request.index = 3;
+        srv.request.position = 1440.0f;
+        if(servo_setPosition.call(srv)){
+                ROS_WARN("Servo Position Failed To Set");
+        }
+	armHomed = true;
+}
+
 void engageArm(){
+if(!armHomed){
+ ROS_WARN("Arm not hommed when engaging automatically hommming");
+ home();
+}
 	corobot_srvs::SetEngaged srv;
 	srv.request.index = 0;
 	srv.request.state = 1;
@@ -36,6 +62,7 @@ void engageArm(){
 	srv.request.index = 3;
 	servo_setEngaged.call(srv);
 	armEngaged = true;
+
 }
 
 void disengageArm(){
