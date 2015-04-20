@@ -18,7 +18,7 @@ float t2 = 0.0f;
 float t3 = 0.0f;
 
 //State of gripper
-bool t4 = false; //Open default
+float t4 = 0.0f;
 
 //Max = m , Min  = n
 float t1_m = 15.0f;
@@ -31,9 +31,9 @@ float t3_n = -90.0f;
 float t4_n = -44.0f;
 
 //angular rates calibration (deg/s)
-float d1 = 2.0f;
-float d2 = 18.9f;
-float d3 = 18.9f;
+float d1 = 1.0f;
+float d2 = 9.0;
+float d3 = 9.0;
 
 //stick deadband
 float min_delta_s = 0.1f;
