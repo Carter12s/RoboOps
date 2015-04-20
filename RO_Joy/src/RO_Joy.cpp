@@ -74,17 +74,20 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
 	s1 = joy->axes[3]*-1;
 	s2 = joy->axes[4];
 	s3 = (joy->axes[2] - joy->axes[5])/2.0f;
-	if(joy->buttons[0]){
+	if(joy->buttons[0] == 1){
 		s4 = true;
+		ROS_INFO("BTN A is true");
 	}
-	if(joy->buttons[1]){
+	if(joy->buttons[1] == 1){
 		s4 = false;
+		ROS_INFO("BTN B is true");
 	}
 	ROS_INFO("Button State %f", s4);
-	if(joy->buttons[2]){
+	if(joy->buttons[2] == 1){
 		t1 = 0.0f;
 		t2 = 0.0f;
 		t3 = 0.0f;
+		ROS_INFO("BTN X is true");
 	}
 	last_update = ros::Time::now();
 	if(timed_out){

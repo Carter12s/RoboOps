@@ -8,8 +8,8 @@ ros::ServiceClient servo_setPosition;
 
 bool throttle_engaged = false;
 bool steering_engaged = false;
-float throttle_min = 65.0f;
-float throttle_max = 155.0f;
+float throttle_min = 55.0f;
+float throttle_max = 145.0f;
 float steering_max = 20.0f;
 float steering_min = -20.0f;
 
