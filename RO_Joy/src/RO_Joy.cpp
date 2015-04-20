@@ -80,6 +80,12 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
 	if(joy->buttons[1]){
 		s4 = false;
 	}
+	ROS_INFO("Button State %f", s4);
+	if(joy->buttons[2]){
+		t1 = 0.0f;
+		t2 = 0.0f;
+		t3 = 0.0f;
+	}
 	last_update = ros::Time::now();
 	if(timed_out){
 		timer.start();
@@ -108,9 +114,9 @@ void timerCallback(const ros::TimerEvent&){
 		ROS_INFO("Steering Set to %f", steering);
 
 		RO_srv::Arm_setAngles ang;
-		t1 = t1+d1*s1/10.0f;
-		t2 = t2+d2*s2/10.0f;
-		t3 = t3+d3*s3/10.0f;
+		t1 = t1+d1*s1;
+		t2 = t2+d2*s2;
+		t3 = t3+d3*s3;
 		if(!s4){
 			t4 = t4_m;
 		}else{

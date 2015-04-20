@@ -21,8 +21,8 @@ float theta1_min = -90.0f;
 float theta1_max = 90.0f;
 float theta2_min = -90.0f;
 float theta2_max = 90.0f;
-float theta3_min = -44.0f;
-float theta3_max = 0.0f;
+float theta3_min = -44.1f;
+float theta3_max = 0.1f;
 
 void home(){
 	corobot_srvs::SetPosition srv;
