@@ -19,8 +19,8 @@ float theta0_min = -90.0f;
 float theta0_max = 90.0f;
 float theta1_min = -110.0f;
 float theta1_max = 110.0f;
-float theta2_min = -90.0f;
-float theta2_max = 90.0f;
+float theta2_min = -110.0f;
+float theta2_max = 110.0f;
 float theta3_min = -44.1f;
 float theta3_max = 0.1f;
 
